@@ -232,7 +232,7 @@ function Modes() {
               onClick={() => setMode(k)}
               onKeyDown={(e) => {
                 if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-                  const next = keys[(keys.indexOf(k) + 1) % keys.length];
+                  const next = keys[(keys.indexOf(k) + 1) % keys.length] ?? k;
                   setMode(next);
                   document.getElementById(`tab-${next}`)?.focus();
                 }
@@ -315,7 +315,7 @@ function Gallery() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={GALLERY[active].caption}
+          aria-label={GALLERY[active]?.caption}
           className="fixed inset-0 z-[70] flex items-center justify-center bg-coal/95 p-4"
           onClick={() => setActive(null)}
         >
@@ -329,8 +329,8 @@ function Gallery() {
             <X />
           </button>
           <figure onClick={(e) => e.stopPropagation()} className="flex max-h-full max-w-5xl flex-col items-center">
-            <img src={GALLERY[active].img} alt={GALLERY[active].alt} className="max-h-[80vh] max-w-full object-contain" />
-            <figcaption className="mt-4 font-display text-ivory">{GALLERY[active].caption}</figcaption>
+            <img src={GALLERY[active]?.img} alt={GALLERY[active]?.alt} className="max-h-[80vh] max-w-full object-contain" />
+            <figcaption className="mt-4 font-display text-ivory">{GALLERY[active]?.caption}</figcaption>
           </figure>
         </div>
       )}
